@@ -18,3 +18,20 @@ Examples:
 go run main.go
 
 curl -X POST  -d '{"flights": [["IND", "EWR"], ["SFO", "ATL"], ["GSO", "IND"], ["ATL", "GSO"]]}' http://localhost:8080/
+
+Request data format:
+
+type FlightsRequest struct {
+    Flights [][]string `json:"flights"`
+}
+
+{"flights": [["IND", "EWR"], ["SFO", "ATL"], ["GSO", "IND"], ["ATL", "GSO"]]}
+
+Response data format:
+
+type FlightsResponse struct {
+    Result []string `json:"result"`
+    Error  string   `json:"error"`
+}
+
+{"result":["SFO","EWR"],"error":""}
